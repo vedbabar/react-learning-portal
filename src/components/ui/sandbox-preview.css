@@ -1,0 +1,114 @@
+/*
+ * Scoped base styles for the live preview.
+ *
+ * WHY THIS FILE EXISTS: Tailwind v4 only generates CSS for class names it finds
+ * in source files at BUILD time. A class a learner types into the live editor at
+ * RUNTIME was never scanned, so its rule doesn't exist and the class silently
+ * does nothing. To keep the preview looking intentional WITHOUT depending on
+ * Tailwind, the course snippets use plain semantic tags (ul, li, strong, …) and
+ * we style those here, scoped under `.sandbox-preview` so nothing leaks into the
+ * surrounding course UI. Inline `style={{…}}` always works at runtime and is the
+ * documented escape hatch for custom styling.
+ */
+
+.sandbox-preview {
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sandbox-preview > * + * {
+  margin-top: 0.5rem;
+}
+
+.sandbox-preview ul,
+.sandbox-preview ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sandbox-preview li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #1e293b;
+  border-radius: 0.5rem;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.sandbox-preview strong {
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.sandbox-preview em {
+  color: #c4b5fd;
+}
+
+.sandbox-preview span {
+  color: #94a3b8;
+}
+
+.sandbox-preview a {
+  color: #67e8f9;
+  text-decoration: underline;
+}
+
+.sandbox-preview h1,
+.sandbox-preview h2,
+.sandbox-preview h3 {
+  margin: 0.25rem 0;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.sandbox-preview h1 {
+  font-size: 1.25rem;
+}
+.sandbox-preview h2 {
+  font-size: 1.1rem;
+}
+
+.sandbox-preview p {
+  margin: 0.25rem 0;
+}
+
+.sandbox-preview button {
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.sandbox-preview button:hover {
+  background: #334155;
+}
+
+.sandbox-preview input,
+.sandbox-preview select,
+.sandbox-preview textarea {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  font: inherit;
+}
+
+.sandbox-preview code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  background: #0f172a;
+  color: #67e8f9;
+}
